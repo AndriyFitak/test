@@ -1,14 +1,24 @@
 .container {
-    width: 300px;
-    margin: 20px auto;
+    padding: 20px;
+    width: 40% ;
+    margin: 100px auto;
+    border:  2px solid orange;
+    border-radius: 9px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
   }
 
-  input {
-    display: block;
-    margin-bottom: 10px;
-    width: 100%;
-  }
-
-  button {
-    padding: 5px 10px;
-  }
+.form-input{
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+}
+.btn-create{
+  display:block;
+  width: 40%;
+  height: 30px;
+  margin: 0 auto;
+  background-color: orange;
+  color: #FFF;
+}

@@ -9,19 +9,90 @@
 //     console.log(res.data)
 //  })
 
-function createProduct() {
-    const product = {
-      name: document.getElementById('name').value,
-      description: document.getElementById('description').value,
-      quantity: parseInt(document.getElementById('quantity').value),
-      price: parseFloat(document.getElementById('price').value)
-    };
+// function createProduct() {
+//     const product = {
+//       name: document.getElementById('name').value,
+//       description: document.getElementById('description').value,
+//       quantity: parseInt(document.getElementById('quantity').value),
+//       price: parseFloat(document.getElementById('price').value)
+//     };
 
-    axios.post('http://localhost:4000/products/create', product)
+//     axios.post('http://localhost:4000/products/create', product)
+//       .then((res) => {
+//         console.log(res.data);
+//       })
+//       .catch((error) => {
+//         console.error(error);
+//       });
+//   }
+
+
+
+const formCreate = { 
+  name: document.querySelector('#form_name'),
+  quantity: document.querySelector('#form_quantity'),
+  price: document.querySelector('#form_price'),
+  description: document.querySelector('#form_description'),
+  btn: document.querySelector('#form_btnCreate')
+}
+const productsEl = document.querySelector('#products')
+
+let products = []
+
+const getProducts = () => {
+  axios.get("http://localhost:4000/products/get-all")
       .then((res) => {
-        console.log(res.data);
+          products = [
+              ...res.data
+          ]
+          renderProducts()
       })
-      .catch((error) => {
-        console.error(error);
-      });
+}
+
+
+const renderProducts = () => { 
+  productsEl.innerHTML = ""
+  products.forEach(productItem => { 
+      productsEl.innerHTML += `
+      <div product-id="${productItem.id}" class="products_item">
+          <p>${productItem.name}</p>
+          <p>${productItem.quantity}</p>
+          <p>${productItem.price}</p>
+          <p>${productItem.description}</p>
+          <button product-id="${productItem.id}" class="btnDelete">Delete</button>
+      </div>
+      `
+  })
+  const btnsDelete = document.querySelectorAll(".btnDelete")
+  btnsDelete.forEach(btnItem => { 
+      btnItem.addEventListener("click", () => { 
+          const productId = btnItem.getAttribute("product-id")
+          console.log(productId)
+          axios.delete(`http://localhost:4000/products/delete?id=${productId}`)
+              .then((res) => {
+                  console.log(res)
+                  getProducts()
+              })
+              
+      })
+  })
+}
+
+
+getProducts()
+
+formCreate.btn.addEventListener('click', () => { 
+  const formData = { 
+      name: formCreate.name.value,
+      quantity: formCreate.quantity.value,
+      price: formCreate.price.value,
+      description: formCreate.description.value
   }
+  axios.post('http://localhost:4000/products/create', {...formData})
+      .then(res => { 
+          console.log(res.data)
+          getProducts()
+      })
+})
+
+  
