@@ -79,6 +79,26 @@ const renderProducts = () => {
 }
 
 
+const idProduct = "mKhdHNCN"
+axios.get(`http://localhost:4000/products/get-item?id=${idProduct}`)
+.then((res) => {
+    console.log(res)
+})
+
+
+axios.get(`http://localhost:4000/products/get?page=5&limit=10`)
+.then((res) => {
+    console.log(res)
+})
+
+
+
+
+
+
+
+
+
 getProducts()
 
 formCreate.btn.addEventListener('click', () => { 
