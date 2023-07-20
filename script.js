@@ -79,14 +79,14 @@ const renderProducts = () => {
 }
 
 
-const idProduct = "mKhdHNCN"
+const idProduct = "RD1pT9tZ"
 axios.get(`http://localhost:4000/products/get-item?id=${idProduct}`)
 .then((res) => {
     console.log(res)
 })
 
 
-axios.get(`http://localhost:4000/products/get?page=5&limit=10`)
+axios.get(`http://localhost:4000/products/get?page=2&limit=10`)
 .then((res) => {
     console.log(res)
 })
