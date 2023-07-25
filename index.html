@@ -7,13 +7,21 @@
     <title>Document</title>
 </head>
 <body>
+    <button class="btnCount">Кількість продуктів</button>
+    <p id="result"></p>
     <div class="container">
         <input id="form_name" class="form-input" type="text" id="name" placeholder="Name">
         <input id="form_quantity" class="form-input" type="number" id="quantity" placeholder="Quantity">
         <input id="form_price" class="form-input" type="number" id="price" placeholder="Price">
         <textarea id="form_description" class="form-input" placeholder="enter-descripton"></textarea>
         <button id="form_btnCreate" class="btn-create">Create</button>
-      </div>
+    </div>
+    <div class="container">
+        <input id="form_id" class="form-input" placeholder="Id" type="text">
+        <input id="form_name_change" class="form-input" type="text" id="name" placeholder="Name">
+        <button id="form_btnChange" class="btn-create">Put</button>
+    </div>
+      
       <div id="products"></div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./script.js"></script>

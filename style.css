@@ -22,3 +22,41 @@
   background-color: orange;
   color: #FFF;
 }
+.btnCount{
+  display:block;
+  width: 10%;
+  height: 30px;
+ 
+  background-color: orange;
+  color: #FFF;
+}
+
+
+
+#products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.products_item {
+  width: 30%;
+  margin-bottom: 20px;
+  border:  1px solid orange;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Add any other styling you want for the product items here */
+.products_item p {
+  margin: 5px 0;
+}
+
+.btnDelete {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
